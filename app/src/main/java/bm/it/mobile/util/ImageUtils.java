@@ -10,9 +10,11 @@ import android.graphics.Paint;
 import android.graphics.PorterDuff;
 import android.graphics.PorterDuffXfermode;
 import android.graphics.Rect;
+import android.graphics.drawable.Drawable;
 import android.media.ExifInterface;
 import android.net.Uri;
 import android.provider.MediaStore;
+import android.support.v4.content.res.ResourcesCompat;
 import android.util.Base64;
 import android.util.DisplayMetrics;
 import android.util.Log;
@@ -202,5 +204,17 @@ public class ImageUtils {
     public Bitmap decodeBase64(String input) throws IllegalArgumentException {
         byte[] decodedByte = Base64.decode(input, 0);
         return BitmapFactory.decodeByteArray(decodedByte, 0, decodedByte.length);
+    }
+
+    /**
+     * Get the image by name from the resourse
+     * @param imageName image name
+     * @param context fragment/activity context
+     * @return image drawable
+     */
+    public Drawable getImageFromDrawableFolderByName(String imageName, Context context) {
+        Resources resources = context.getResources();
+        final int resourceId = resources.getIdentifier(imageName, "drawable", context.getPackageName());
+        return ResourcesCompat.getDrawable(context.getResources(), resourceId, null);
     }
 }
