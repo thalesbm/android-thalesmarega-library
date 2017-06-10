@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- alert dialog -->
+    <string name="alert">Alerta</string>
+    <string name="ok">OK</string>
+    <string name="yes">Sim</string>
+    <string name="no">Não</string>
+
+    <string name="no_internet_description">Você não esta conectado a internet.</string>
+
+</resources>
