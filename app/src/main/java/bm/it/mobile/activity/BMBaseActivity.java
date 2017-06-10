@@ -11,20 +11,20 @@ public class BMBaseActivity extends AppCompatActivity {
 
     private Toolbar toolbar;
 
-    protected void setupToolbar(View toolbarView) {
+    public void setupToolbar(View toolbarView) {
         toolbar = (Toolbar) toolbarView;
         if (toolbar != null) {
             setSupportActionBar(toolbar);
         }
     }
 
-    protected void changeToolbarTitle(String title) {
+    public void changeToolbarTitle(String title) {
         if (toolbar != null) {
             toolbar.setTitle(title);
         }
     }
 
-    protected void setToolbarProperties(String title) {
+    public void setToolbarProperties(String title) {
         if (getSupportActionBar() != null) {
             getSupportActionBar().setTitle(title);
             getSupportActionBar().setHomeButtonEnabled(true);
@@ -32,7 +32,7 @@ public class BMBaseActivity extends AppCompatActivity {
         }
     }
 
-    protected Toolbar getToolbar() {
+    public Toolbar getToolbar() {
         return toolbar;
     }
 
@@ -48,13 +48,5 @@ public class BMBaseActivity extends AppCompatActivity {
     public static boolean isOnline(Context context) {
         ConnectivityManager cm = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
         return cm.getActiveNetworkInfo() != null && cm.getActiveNetworkInfo().isAvailable() && cm.getActiveNetworkInfo().isConnected();
-    }
-
-    /**
-     * Return the screen view
-     * @return view
-     */
-    public View getView() {
-        return findViewById(android.R.id.content);
     }
 }

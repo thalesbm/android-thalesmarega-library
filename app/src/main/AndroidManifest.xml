@@ -3,7 +3,11 @@
 
     <application
         android:allowBackup="true"
-        android:label="BM IT Mobile"
-        android:supportsRtl="true"
-        android:theme="@style/AppTheme" />
+        android:supportsRtl="true">
+
+        <activity
+            android:name=".activity.BMBaseActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden" />
+    </application>
 </manifest>
