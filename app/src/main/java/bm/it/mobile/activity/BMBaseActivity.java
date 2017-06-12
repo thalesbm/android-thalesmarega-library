@@ -1,9 +1,11 @@
 package bm.it.mobile.activity;
 
+import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 
 public class BMBaseActivity extends AppCompatActivity {
 
@@ -38,6 +40,11 @@ public class BMBaseActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         if (id == android.R.id.home) {
+            View view = findViewById(android.R.id.content);
+            if (view != null) {
+                InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+            }
             finish();
         }
         return super.onOptionsItemSelected(item);

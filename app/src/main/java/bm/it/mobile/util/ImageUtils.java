@@ -27,10 +27,10 @@ import java.io.IOException;
 public class ImageUtils {
 
     private int mOrientation = -1;
-    private Context context;
+    private Context mContext;
 
     public ImageUtils(Context context) {
-        this.context = context;
+        this.mContext = context;
     }
 
     /**
@@ -73,7 +73,7 @@ public class ImageUtils {
      * @return dp
      */
     public int convertPixelToDp(final int num) {
-        float scale = context.getResources().getDisplayMetrics().density;
+        float scale = mContext.getResources().getDisplayMetrics().density;
         return (int) (num * scale + 0.5f);
     }
 
@@ -108,7 +108,7 @@ public class ImageUtils {
      * @return image URI
      */
     public Uri convertBitmapToUri(Bitmap bitmap) {
-        String path = MediaStore.Images.Media.insertImage(context.getContentResolver(), bitmap, "Title", null);
+        String path = MediaStore.Images.Media.insertImage(mContext.getContentResolver(), bitmap, "Title", null);
         return Uri.parse(path);
     }
 
@@ -136,14 +136,12 @@ public class ImageUtils {
      * Convert DP to pixel
      *
      * @param dp      quantity dp
-     * @param context activity/fragment context
      * @return quantity px
      */
-    public float convertDpToPixel(float dp, Context context) {
-        Resources resources = context.getResources();
+    public float convertDpToPixel(float dp) {
+        Resources resources = mContext.getResources();
         DisplayMetrics metrics = resources.getDisplayMetrics();
-        float px = dp * ((float) metrics.densityDpi / DisplayMetrics.DENSITY_DEFAULT);
-        return px;
+        return dp * ((float) metrics.densityDpi / DisplayMetrics.DENSITY_DEFAULT);
     }
 
 
@@ -209,12 +207,11 @@ public class ImageUtils {
     /**
      * Get the image by name from the resourse
      * @param imageName image name
-     * @param context fragment/activity context
      * @return image drawable
      */
-    public Drawable getImageFromDrawableFolderByName(String imageName, Context context) {
-        Resources resources = context.getResources();
-        final int resourceId = resources.getIdentifier(imageName, "drawable", context.getPackageName());
-        return ResourcesCompat.getDrawable(context.getResources(), resourceId, null);
+    public Drawable getImageFromDrawableFolderByName(String imageName) {
+        Resources resources = mContext.getResources();
+        final int resourceId = resources.getIdentifier(imageName, "drawable", mContext.getPackageName());
+        return ResourcesCompat.getDrawable(mContext.getResources(), resourceId, null);
     }
 }
