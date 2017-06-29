@@ -21,9 +21,8 @@ import bm.it.mobile.util.FolderUtils;
 
 public class CameraActivity extends BMBaseActivity {
     public static final String PARAMETER_FILE_NAME = "pictureFileName";
-    public static final int INTENT_CAMERA = 0x001;
+    public static final int INTENT_OPEN_CAMERA = 1000;
 
-    private final int INTENT_OPEN_CAMERA = 1000;
     private final int MULTIPLE_PERMISSIONS = 100;
 
     private String mFileName;
