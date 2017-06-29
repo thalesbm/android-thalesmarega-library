@@ -37,10 +37,10 @@ public class ParcelableUtils {
     }
 
     public static Long writeValueToDate(Date value) {
-        return (Long) (value != null ? value.getTime() : value);
+        return (Long) (value != null ? value.getTime() : null);
     }
 
     public static Long writeValueToBoolean(Boolean value) {
-        return (long) (value == true ? 0 : 1);
+        return (long) (value ? 0 : 1);
     }
 }

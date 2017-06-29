@@ -25,8 +25,8 @@ public class BMBaseActivity extends AppCompatActivity {
     }
 
     public void changeToolbarTitle(String title) {
-        if (toolbar != null) {
-            toolbar.setTitle(title);
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setTitle(title);
         }
     }
 
