@@ -2,6 +2,7 @@ package bm.it.mobile.util;
 
 import android.content.Context;
 import android.content.res.Resources;
+import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
@@ -205,7 +206,7 @@ public class ImageUtils {
     }
 
     /**
-     * Get the image by name from the resourse
+     * Get the image by name from the resource
      * @param imageName image name
      * @return image drawable
      */
@@ -213,5 +214,23 @@ public class ImageUtils {
         Resources resources = mContext.getResources();
         final int resourceId = resources.getIdentifier(imageName, "drawable", mContext.getPackageName());
         return ResourcesCompat.getDrawable(mContext.getResources(), resourceId, null);
+    }
+
+    /**
+     * Get Real path from URI
+     * @param uri image uri
+     * @return string real path
+     */
+    public String getRealPathFromURI(Uri uri) {
+        String[] projection = { MediaStore.Images.Media.DATA };
+        Cursor cursor = mContext.getContentResolver().query(uri, projection, null, null, null);
+        if (cursor != null) {
+            int columnIndex = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
+            cursor.moveToFirst();
+            String columnRealPath = cursor.getString(columnIndex);
+            cursor.close();
+            return columnRealPath;
+        }
+        return "";
     }
 }
