@@ -14,5 +14,10 @@
             android:name=".activity.CameraActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden" />
+
+        <activity
+            android:name=".activity.GalleryActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden" />
     </application>
 </manifest>
