@@ -2,6 +2,8 @@ package bm.it.mobile.activity;
 
 import android.Manifest;
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
@@ -17,15 +19,26 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import bm.it.mobile.R;
 import bm.it.mobile.util.FolderUtils;
 
+/**
+    // call the activity
+    Intent intent = new Intent(getAppActivity(), CameraActivity.class);
+    startActivityForResult(intent, CameraActivity.INTENT_OPEN_CAMERA);
+
+    // get result
+    if (requestCode == CameraActivity.INTENT_OPEN_CAMERA && resultCode == RESULT_OK) {
+        String fileName = data.getExtras().getString(CameraActivity.PARAMETER_IMAGE_PATH);
+    }
+ */
 public class CameraActivity extends BMBaseActivity {
-    public static final String PARAMETER_FILE_NAME = "pictureFileName";
+    public static final String PARAMETER_IMAGE_PATH = "picturePathImage";
     public static final int INTENT_OPEN_CAMERA = 1000;
 
     private final int MULTIPLE_PERMISSIONS = 100;
 
-    private String mFileName;
+    private String mFileName, mCompletePath;
 
     private String[] permissions = new String[]{
             Manifest.permission.WRITE_EXTERNAL_STORAGE,
@@ -76,7 +89,7 @@ public class CameraActivity extends BMBaseActivity {
                     if (allPermissionHasBeenGranted) {
                         takePicture();
                     } else {
-                        checkPermissions();
+                        alertDialogPermissionIssue();
                     }
                 }
             }
@@ -87,7 +100,7 @@ public class CameraActivity extends BMBaseActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == INTENT_OPEN_CAMERA && resultCode == RESULT_OK) {
             Intent returnIntent = new Intent();
-            returnIntent.putExtra(PARAMETER_FILE_NAME, mFileName);
+            returnIntent.putExtra(PARAMETER_IMAGE_PATH, mCompletePath);
             setResult(Activity.RESULT_OK, returnIntent);
             finish();
         } else if (requestCode == INTENT_OPEN_CAMERA && resultCode == RESULT_CANCELED) {
@@ -105,10 +118,26 @@ public class CameraActivity extends BMBaseActivity {
     private File getOutputMediaFile() {
         try {
             FolderUtils folderUtils = new FolderUtils(this);
+            mCompletePath = folderUtils.getFile().getAbsolutePath() + "/" + mFileName + ".png";
             return new File(folderUtils.getFile().getAbsolutePath(), mFileName + ".png");
         } catch (IOException e) {
             e.printStackTrace();
         }
         return null;
+    }
+
+    private void alertDialogPermissionIssue() {
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+        alertDialogBuilder.setTitle(getString(R.string.alert));
+        alertDialogBuilder.setMessage(getString(R.string.permission_camera));
+        alertDialogBuilder.setCancelable(false);
+        alertDialogBuilder.setPositiveButton(getString(R.string.ok), new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                checkPermissions();
+            }
+        });
+
+        AlertDialog alertDialog = alertDialogBuilder.create();
+        alertDialog.show();
     }
 }

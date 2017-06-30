@@ -11,4 +11,6 @@
 
     <string name="no_internet_description">Você não esta conectado a internet.</string>
 
+    <string name="permission_camera">You do not have permission to take picture.</string>
+
 </resources>
