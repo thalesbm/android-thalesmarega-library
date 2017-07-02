@@ -41,6 +41,15 @@ public class FolderUtils {
         return file;
     }
 
+    public void removeAllFilesFromFolder(File fileOrDirectory) {
+        if (fileOrDirectory.isDirectory()) {
+            for (File child : fileOrDirectory.listFiles()) {
+                removeAllFilesFromFolder(child);
+            }
+        }
+        fileOrDirectory.delete();
+    }
+
     public File getFile() {
         return mFile;
     }

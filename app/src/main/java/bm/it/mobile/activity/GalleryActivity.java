@@ -70,10 +70,12 @@ public class GalleryActivity extends CameraGalleryActivity {
                     finish();
                 } catch (Exception e) {
                     e.printStackTrace();
+                    setResult(Activity.RESULT_CANCELED, new Intent());
                     finish();
                 }
             }
         } else if (requestCode == INTENT_OPEN_GALLERY && resultCode == RESULT_CANCELED) {
+            setResult(Activity.RESULT_CANCELED, new Intent());
             finish();
         }
     }

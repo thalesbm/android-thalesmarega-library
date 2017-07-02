@@ -48,6 +48,7 @@ public class CameraActivity extends CameraGalleryActivity {
             setResult(Activity.RESULT_OK, returnIntent);
             finish();
         } else if (requestCode == INTENT_OPEN_CAMERA && resultCode == RESULT_CANCELED) {
+            setResult(Activity.RESULT_CANCELED, new Intent());
             finish();
         }
     }
