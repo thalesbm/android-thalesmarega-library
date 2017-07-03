@@ -9,11 +9,13 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 
 public class BMBaseActivity extends AppCompatActivity {
+    private final String TAG = BMBaseActivity.class.getSimpleName();
 
     private Toolbar toolbar;
 
@@ -46,14 +48,43 @@ public class BMBaseActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         if (id == android.R.id.home) {
-            View view = findViewById(android.R.id.content);
-            if (view != null) {
-                InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-                imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
-            }
+            hideKeyboard();
             finish();
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    protected void hideKeyboardWhenOpensMenu(DrawerLayout drawerLayout) {
+        drawerLayout.addDrawerListener(new DrawerLayout.DrawerListener() {
+            @Override
+            public void onDrawerSlide(View drawerView, float slideOffset) {
+                Log.v(TAG, "onDrawerSlide(View drawerView, float slideOffset)");
+            }
+
+            @Override
+            public void onDrawerOpened(View drawerView) {
+                Log.v(TAG, "nDrawerOpened(View drawerView)");
+            }
+
+            @Override
+            public void onDrawerClosed(View drawerView) {
+                Log.v(TAG, "onDrawerClosed(View drawerView)");
+            }
+
+            @Override
+            public void onDrawerStateChanged(int newState) {
+                Log.v(TAG, "onDrawerStateChanged(int newState)");
+                hideKeyboard();
+            }
+        });
+    }
+
+    protected void hideKeyboard() {
+        View view = findViewById(android.R.id.content);
+        if (view != null) {
+            InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+            imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+        }
     }
 
     protected void onBackPressed(String defaultFragmentName, FragmentManager fragmentManager,
