@@ -14,7 +14,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 
-public class BMBaseActivity extends AppCompatActivity {
+    public class BMBaseActivity extends AppCompatActivity {
     private final String TAG = BMBaseActivity.class.getSimpleName();
 
     private Toolbar toolbar;
