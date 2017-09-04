@@ -1,11 +1,11 @@
 package bm.it.mobile.activity;
 
 import android.content.Context;
+import android.preference.PreferenceFragment;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -14,7 +14,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 
-    public class BMBaseActivity extends AppCompatActivity {
+import bm.it.mobile.R;
+
+public class BMBaseActivity extends AppCompatActivity {
     private final String TAG = BMBaseActivity.class.getSimpleName();
 
     private Toolbar toolbar;
@@ -87,33 +89,56 @@ import android.view.inputmethod.InputMethodManager;
         }
     }
 
-    protected void onBackPressed(String defaultFragmentName, FragmentManager fragmentManager,
-                              int drawerID, NavigationView navigationView) {
-        DrawerLayout drawer = (DrawerLayout) findViewById(drawerID);
-        if (drawer.isDrawerOpen(GravityCompat.START)) {
-            drawer.closeDrawer(GravityCompat.START);
-        } else {
-
-            if (fragmentManager == null) {
-                super.onBackPressed();
-            } else {
-                int sizeStack = fragmentManager.getBackStackEntryCount() - 1;
-
-                if (fragmentManager.getBackStackEntryCount() > 0) {
-                    String className = fragmentManager.getBackStackEntryAt(sizeStack).getName();
-                    if (className.equals(defaultFragmentName)) {
-                        finish();
-                    } else {
-                        navigationView.getMenu().getItem(0).setChecked(true);
-                        for (int i = 0; i < fragmentManager.getBackStackEntryCount(); ++i) {
-                            fragmentManager.popBackStack();
-                        }
-                    }
+    protected void onBackPressed(String defaultFragmentName, FragmentManager fragmentManagerApp4, android.app.FragmentManager mFragmentManagerApp, int drawerID, NavigationView navigationView) {
+        DrawerLayout drawer = (DrawerLayout) this.findViewById(drawerID);
+        if (drawer.isDrawerOpen(8388611)) {
+            drawer.closeDrawer(8388611);
+        } else if (fragmentManagerApp4 != null && mFragmentManagerApp != null) {
+            int sizeStackApp;
+            String className;
+            int i;
+            if (fragmentManagerApp4.getBackStackEntryCount() > 0) {
+                sizeStackApp = fragmentManagerApp4.getBackStackEntryCount() - 1;
+                className = fragmentManagerApp4.getBackStackEntryAt(sizeStackApp).getName();
+                if (className.equals(defaultFragmentName)) {
+                    this.finish();
                 } else {
-                    super.onBackPressed();
+                    navigationView.getMenu().getItem(0).setChecked(true);
+
+                    for (i = 0; i < fragmentManagerApp4.getBackStackEntryCount(); ++i) {
+                        fragmentManagerApp4.popBackStack();
+                        changeToolbarTitle(getString(R.string.app_name));
+                    }
                 }
+            } else if (mFragmentManagerApp.getBackStackEntryCount() > 0) {
+                sizeStackApp = mFragmentManagerApp.getBackStackEntryCount() - 1;
+                className = mFragmentManagerApp.getBackStackEntryAt(sizeStackApp).getName();
+                if (className.equals(defaultFragmentName)) {
+                    this.finish();
+                } else {
+                    navigationView.getMenu().getItem(0).setChecked(true);
+
+                    for (i = 0; i < mFragmentManagerApp.getBackStackEntryCount(); ++i) {
+                        mFragmentManagerApp.popBackStack();
+                        changeToolbarTitle(getString(R.string.app_name));
+                    }
+                }
+            } else {
+                super.onBackPressed();
             }
+        } else {
+            super.onBackPressed();
         }
+    }
+
+    protected void replacePreferenceFragment(PreferenceFragment fragment, boolean addToBackStack, int navDrawerContainer) {
+        android.app.FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
+        fragmentTransaction.replace(navDrawerContainer, fragment);
+        if (addToBackStack) {
+            fragmentTransaction.addToBackStack(fragment.getClass().getName());
+        }
+
+        fragmentTransaction.commit();
     }
 
     protected void replaceFragment(Fragment fragment, boolean addToBackStack, int navDrawerContainer) {

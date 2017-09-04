@@ -1,5 +1,6 @@
 package bm.it.mobile.entity;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ResponseTask<T> {
@@ -52,6 +53,10 @@ public class ResponseTask<T> {
 
     public List<T> getList() {
         return list;
+    }
+
+    public ArrayList<T> getArrayList() {
+        return new ArrayList<T>(list);
     }
 
     public void setList(List<T> list) {

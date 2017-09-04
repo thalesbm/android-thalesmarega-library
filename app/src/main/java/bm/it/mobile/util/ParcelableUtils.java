@@ -21,11 +21,6 @@ public class ParcelableUtils {
         return (value != null) ? (Boolean) value : null;
     }
 
-    public static Date readValueToDate(Parcel in) {
-        Object value = in.readValue(Long.class.getClassLoader());
-        return value != null ? new Date((Long) value) : null;
-    }
-
     public static Integer readValueToInteger(Parcel in) {
         Object value = in.readValue(Integer.class.getClassLoader());
         return value != null ? (Integer) value : null;
@@ -34,6 +29,12 @@ public class ParcelableUtils {
     public static byte[] readValueToByte(Parcel in) {
         Object value = in.readValue(byte[].class.getClassLoader());
         return value != null ? (byte[]) value : null;
+    }
+
+    public static Date readValueToDate(Parcel in) {
+        //Object value = in.readValue(Long.class.getClassLoader());
+        //return in.readLong() == 0 ? null : new Date(in.readLong());
+        return new Date(in.readLong());
     }
 
     public static Long writeValueToDate(Date value) {
