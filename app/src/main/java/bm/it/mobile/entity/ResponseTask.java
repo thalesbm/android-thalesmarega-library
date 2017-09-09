@@ -5,27 +5,22 @@ import java.util.List;
 
 public class ResponseTask<T> {
 
-    public enum TaskStatus {
-        SUCCESS(1),
-        FAILURE(2);
-
-        TaskStatus(int value) {
-            this.value = value;
-        }
-
-        private int value;
-        public int getValue() {
-            return value;
-        }
+    public enum Status {
+        SUCCESS,
+        FAILURE;
     }
 
     private T object;
 
     private List<T> list;
 
-    private int status;
+    private String status;
 
     private Exception exception;
+
+    private int httpCode;
+
+    private String httpMessage;
 
     public T getObject() {
         return object;
@@ -35,11 +30,11 @@ public class ResponseTask<T> {
         this.object = object;
     }
 
-    public int getStatus() {
+    public String getStatus() {
         return status;
     }
 
-    public void setStatus(int status) {
+    public void setStatus(String status) {
         this.status = status;
     }
 
@@ -61,5 +56,21 @@ public class ResponseTask<T> {
 
     public void setList(List<T> list) {
         this.list = list;
+    }
+
+    public int getHttpCode() {
+        return httpCode;
+    }
+
+    public void setHttpCode(int httpCode) {
+        this.httpCode = httpCode;
+    }
+
+    public String getHttpMessage() {
+        return httpMessage;
+    }
+
+    public void setHttpMessage(String httpMessage) {
+        this.httpMessage = httpMessage;
     }
 }

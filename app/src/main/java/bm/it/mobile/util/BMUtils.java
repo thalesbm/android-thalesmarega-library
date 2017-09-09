@@ -5,9 +5,11 @@ import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
 import android.net.ConnectivityManager;
+import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 public class BMUtils {
@@ -73,5 +75,19 @@ public class BMUtils {
         int bound = (int) (drawable.getIntrinsicWidth() * size);
         drawable.setBounds(0, 0, bound, bound);
         return drawable;
+    }
+
+    public static LinearLayout.LayoutParams setLayoutParamsInImageView(Context context, int margin, boolean isMarginButton) {
+        ImageUtils imageUtils = new ImageUtils(context);
+        int imageSize = (int) imageUtils.toImageUnits().convertDpToPixel(25);
+        int marginButton = (int) imageUtils.toImageUnits().convertDpToPixel(margin);
+        LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(imageSize, imageSize);
+        layoutParams.setMargins(0, 0, 0, marginButton);
+        if (isMarginButton) {
+            layoutParams.gravity = Gravity.BOTTOM;
+        } else {
+            layoutParams.gravity = Gravity.CENTER;
+        }
+        return layoutParams;
     }
 }

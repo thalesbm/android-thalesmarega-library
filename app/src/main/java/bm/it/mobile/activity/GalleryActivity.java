@@ -62,7 +62,7 @@ public class GalleryActivity extends CameraGalleryActivity {
                     final Bitmap bitmap = BitmapFactory.decodeStream(imageStream);
 
                     ImageUtils imageUtils = new ImageUtils(this);
-                    imageUtils.saveBitmapInFile(bitmap, getOutputMediaFile());
+                    imageUtils.toBitmap().saveBitmapInFile(bitmap, getOutputMediaFile());
 
                     Intent returnIntent = new Intent();
                     returnIntent.putExtra(PARAMETER_IMAGE_PATH, mCompletePath);
