@@ -49,4 +49,5 @@ dependencies {
 
     // APACHE
     compile group: 'org.apache.httpcomponents', name: 'httpclient-android', version: '4.3.5'
+    compile group: 'org.apache.commons', name: 'commons-io', version: '1.3.2'
 }

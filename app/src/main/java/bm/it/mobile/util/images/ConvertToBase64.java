@@ -26,7 +26,7 @@ public class ConvertToBase64 {
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
         bitmap.compress(Bitmap.CompressFormat.JPEG, 70, byteArrayOutputStream);
         byte[] byteArray = byteArrayOutputStream.toByteArray();
-        return Base64.encodeToString(byteArray, Base64.NO_WRAP);
+        return this.fromBytes(byteArray);
     }
 
     public String fromURI(Uri uri) {
@@ -40,5 +40,9 @@ public class ConvertToBase64 {
             return columnRealPath;
         }
         return "";
+    }
+
+    public String fromBytes(byte[] bytes) {
+        return Base64.encodeToString(bytes, Base64.NO_WRAP);
     }
 }

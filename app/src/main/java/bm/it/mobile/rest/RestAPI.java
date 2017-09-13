@@ -26,7 +26,6 @@ public class RestAPI {
             connection = (HttpURLConnection) url.openConnection();
             connection.setRequestMethod("POST");
             connection.setRequestProperty("Content-Type", "application/json");
-            connection.setRequestProperty("Authorization", "Basic cG1jY2FiZTpxd2VydDIz");
             connection.setConnectTimeout(10000);
 
             connection.setDoOutput(true);
@@ -37,9 +36,12 @@ public class RestAPI {
             connection.getOutputStream().flush();
             connection.getOutputStream().close();
 
+            Log.d(TAG, "##############################################");
             Log.d(TAG, "HTTP URL: " + sUrl);
+            Log.d(TAG, "HTTP POST");
             Log.d(TAG, "HTTP response code: " + connection.getResponseCode());
             Log.d(TAG, "HTTP response message: " + connection.getResponseMessage());
+            Log.d(TAG, "##############################################");
 
             String line;
             sb = new StringBuilder();
@@ -65,9 +67,12 @@ public class RestAPI {
             connection.setRequestProperty("Content-Type", "application/json");
             connection.setConnectTimeout(10000);
 
+            Log.d(TAG, "##############################################");
             Log.d(TAG, "HTTP URL: " + sUrl);
+            Log.d(TAG, "HTTP GET");
             Log.d(TAG, "HTTP response code: " + connection.getResponseCode());
             Log.d(TAG, "HTTP response message: " + connection.getResponseMessage());
+            Log.d(TAG, "##############################################");
 
             String line;
             sb = new StringBuilder();
@@ -116,9 +121,12 @@ public class RestAPI {
             dos.flush();
             dos.close();
 
+            Log.d(TAG, "##############################################");
             Log.d(TAG, "HTTP URL: " + urlPath);
+            Log.d(TAG, "HTTP POST");
             Log.d(TAG, "HTTP response code: " + connection.getResponseCode());
             Log.d(TAG, "HTTP response message: " + connection.getResponseMessage());
+            Log.d(TAG, "##############################################");
 
             String line;
             sb = new StringBuilder();
