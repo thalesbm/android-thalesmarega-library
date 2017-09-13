@@ -2,11 +2,14 @@ package bm.it.mobile.util;
 
 import android.content.Context;
 
+import java.io.IOException;
+
 import bm.it.mobile.util.images.ConvertImageUnits;
 import bm.it.mobile.util.images.ConvertToBase64;
 import bm.it.mobile.util.images.ConvertToBitmap;
 import bm.it.mobile.util.images.ConvertToByte;
 import bm.it.mobile.util.images.ConvertToDrawable;
+import bm.it.mobile.util.images.ConvertToFile;
 import bm.it.mobile.util.images.ConvertToRoundedBitmapDrawable;
 import bm.it.mobile.util.images.ConvertToURI;
 
@@ -44,5 +47,9 @@ public class ImageUtils {
 
     public ConvertImageUnits toImageUnits() {
         return new ConvertImageUnits(mContext);
+    }
+
+    public ConvertToFile toFile() throws IOException {
+        return new ConvertToFile(mContext);
     }
 }

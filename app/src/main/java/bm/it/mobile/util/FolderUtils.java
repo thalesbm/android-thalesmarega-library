@@ -14,6 +14,7 @@ public class FolderUtils {
 
     private Context mContext;
     private File mFile;
+    private String mPath;
 
     public FolderUtils(Context context) throws IOException {
         this.mContext = context;
@@ -21,13 +22,18 @@ public class FolderUtils {
     }
 
     private void createDirIfNotExists() throws IOException {
-        String mainPath = Environment.getExternalStorageDirectory() + "/" + mContext.getString(R.string.app_name);
+        mPath = Environment.getExternalStorageDirectory() + "/" + mContext.getString(R.string.app_name);
 
-        mFile = this.createDirIfNotExists(mainPath);
+        mFile = this.createDirIfNotExists(mPath);
     }
 
-    public boolean removeFileFromSD(String fileName) {
+    public boolean removeImageFileFromSD(String fileName) {
         File file = new File(getFile().getAbsolutePath(), fileName + ".png");
+        return file.delete();
+    }
+
+    public boolean removeImageVideoFromSD(String fileName) {
+        File file = new File(getFile().getAbsolutePath(), fileName + ".mp4");
         return file.delete();
     }
 
@@ -48,6 +54,10 @@ public class FolderUtils {
             }
         }
         fileOrDirectory.delete();
+    }
+
+    public String getMainPath() {
+        return mPath;
     }
 
     public File getFile() {
