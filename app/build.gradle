@@ -46,4 +46,7 @@ dependencies {
     compile 'com.squareup.retrofit2:converter-gson:2.3.0'
     compile 'com.squareup.okhttp3:logging-interceptor:3.8.1'
     compile 'com.google.code.gson:gson:2.8.1'
+
+    // APACHE
+    compile group: 'org.apache.httpcomponents', name: 'httpclient-android', version: '4.3.5'
 }

@@ -10,6 +10,9 @@ import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
+/**
+ * RETROFIT
+ */
 public class RestClient {
 
     private static Retrofit retrofit = null;
