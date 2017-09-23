@@ -13,6 +13,7 @@ import android.media.ExifInterface;
 import android.util.Base64;
 import android.util.Log;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -93,5 +94,12 @@ public class ConvertToBitmap {
 
         myBitmap = Bitmap.createBitmap(myBitmap, 0, 0, myBitmap.getWidth(), myBitmap.getHeight(), matrix, true);
         return myBitmap;
+    }
+
+    public Bitmap resizeImage(Bitmap largeBitmap) {
+        ByteArrayOutputStream imageStream = new ByteArrayOutputStream();
+        largeBitmap.compress(Bitmap.CompressFormat.JPEG, 90, imageStream);
+        byte[] imageBytes = imageStream.toByteArray();
+        return BitmapFactory.decodeByteArray(imageBytes, 0, imageBytes.length);
     }
 }

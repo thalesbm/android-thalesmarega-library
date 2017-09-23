@@ -3,6 +3,7 @@ package bm.it.mobile.activity;
 import android.content.Context;
 import android.preference.PreferenceFragment;
 import android.support.design.widget.NavigationView;
+import android.support.design.widget.TextInputLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -12,9 +13,14 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.animation.Animation;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.EditText;
+import android.widget.ImageView;
 
 import bm.it.mobile.R;
+
+import static bm.it.mobile.util.BMUtils.setLayoutParamsInImageView;
 
 public class BMBaseActivity extends AppCompatActivity {
     private final String TAG = BMBaseActivity.class.getSimpleName();
@@ -148,5 +154,44 @@ public class BMBaseActivity extends AppCompatActivity {
             fragmentTransaction.addToBackStack(fragment.getClass().getName());
         }
         fragmentTransaction.commit();
+    }
+
+    protected void changeFocusEditText(EditText editText, final ImageView imageView, final int drawableFocus, final int drawableNoFocus) {
+        editText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View view, boolean focus) {
+                if (focus) {
+                    imageView.setBackgroundResource(drawableFocus);
+                } else {
+                    imageView.setBackgroundResource(drawableNoFocus);
+                }
+            }
+        });
+    }
+
+    protected boolean validate(String messageError, EditText editText, TextInputLayout textInputLayout, ImageView imageView) {
+        if (editText.getText().toString().trim().isEmpty()) {
+            textInputLayout.setError(messageError);
+            imageView.setLayoutParams(setLayoutParamsInImageView(this, 3, false));
+            return false;
+        } else {
+            textInputLayout.setErrorEnabled(false);
+            imageView.setLayoutParams(setLayoutParamsInImageView(this, 7, true));
+        }
+        return true;
+    }
+
+    protected boolean validate(String messageError, EditText editText, TextInputLayout textInputLayout, ImageView imageView, Animation animation) {
+        if (editText.getText().toString().trim().isEmpty()) {
+            textInputLayout.setError(messageError);
+            editText.startAnimation(animation);
+            imageView.setLayoutParams(setLayoutParamsInImageView(this, 3, false));
+            return false;
+        } else {
+            textInputLayout.setErrorEnabled(false);
+            editText.clearAnimation();
+            imageView.setLayoutParams(setLayoutParamsInImageView(this, 7, true));
+        }
+        return true;
     }
 }
