@@ -34,6 +34,21 @@ public class BMBaseFragment extends Fragment {
         });
     }
 
+    protected boolean validate(String messageError, EditText editText, TextInputLayout textInputLayout,
+                               ImageView imageView1, ImageView imageView2, int imageView2Size) {
+        if (editText.getText().toString().trim().isEmpty()) {
+            textInputLayout.setError(messageError);
+            imageView1.setLayoutParams(setLayoutParamsInImageView(getContext(), 3, false));
+            imageView2.setLayoutParams(setLayoutParamsInImageView(getContext(), 3, false, imageView2Size));
+            return false;
+        } else {
+            textInputLayout.setErrorEnabled(false);
+            imageView1.setLayoutParams(setLayoutParamsInImageView(getContext(), 7, true));
+            imageView2.setLayoutParams(setLayoutParamsInImageView(getContext(), 7, true, imageView2Size));
+        }
+        return true;
+    }
+
     protected boolean validate(String messageError, EditText editText, TextInputLayout textInputLayout, ImageView imageView) {
         if (editText.getText().toString().trim().isEmpty()) {
             textInputLayout.setError(messageError);

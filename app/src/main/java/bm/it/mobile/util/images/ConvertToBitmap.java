@@ -96,6 +96,10 @@ public class ConvertToBitmap {
         return myBitmap;
     }
 
+    public Bitmap resizeImage(String path) {
+        return this.resizeImage(fromImagePath(path));
+    }
+
     public Bitmap resizeImage(Bitmap largeBitmap) {
         ByteArrayOutputStream imageStream = new ByteArrayOutputStream();
         largeBitmap.compress(Bitmap.CompressFormat.JPEG, 90, imageStream);

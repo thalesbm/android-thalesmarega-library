@@ -78,8 +78,12 @@ public class BMUtils {
     }
 
     public static LinearLayout.LayoutParams setLayoutParamsInImageView(Context context, int margin, boolean isMarginButton) {
+        return setLayoutParamsInImageView(context, margin, isMarginButton, 25);
+    }
+
+    public static LinearLayout.LayoutParams setLayoutParamsInImageView(Context context, int margin, boolean isMarginButton, int size) {
         ImageUtils imageUtils = new ImageUtils(context);
-        int imageSize = (int) imageUtils.toImageUnits().convertDpToPixel(25);
+        int imageSize = (int) imageUtils.toImageUnits().convertDpToPixel(size);
         int marginButton = (int) imageUtils.toImageUnits().convertDpToPixel(margin);
         LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(imageSize, imageSize);
         layoutParams.setMargins(0, 0, 0, marginButton);

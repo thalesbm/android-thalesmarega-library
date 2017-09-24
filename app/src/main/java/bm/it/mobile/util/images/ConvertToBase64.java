@@ -18,8 +18,7 @@ public class ConvertToBase64 {
     }
 
     public String fromImagePath(String path) {
-        Bitmap bitmap = new ConvertToBitmap(mContext).fromImagePath(path);
-        return this.fromBitmap(bitmap);
+        return this.fromBitmap(new ConvertToBitmap(mContext).fromImagePath(path));
     }
 
     public String fromBitmap(Bitmap bitmap) {
@@ -27,6 +26,15 @@ public class ConvertToBase64 {
         bitmap.compress(Bitmap.CompressFormat.JPEG, 70, byteArrayOutputStream);
         byte[] byteArray = byteArrayOutputStream.toByteArray();
         return this.fromBytes(byteArray);
+    }
+
+    public String fromResizeImagePath(String path) {
+        Bitmap bitmap = new ConvertToBitmap(mContext).fromImagePath(path);
+        return this.fromResizeBitmap(bitmap);
+    }
+
+    public String fromResizeBitmap(Bitmap bitmap) {
+        return this.fromBitmap(new ConvertToBitmap(mContext).resizeImage(bitmap));
     }
 
     public String fromURI(Uri uri) {
