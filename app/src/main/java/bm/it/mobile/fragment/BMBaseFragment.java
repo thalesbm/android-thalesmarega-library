@@ -9,9 +9,14 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ImageView;
 
-import static bm.it.mobile.util.BMUtils.setLayoutParamsInImageView;
+import bm.it.mobile.activity.BMBaseActivity;
 
 public class BMBaseFragment extends Fragment {
+
+    private BMBaseActivity getBaseActivity() {
+        return (BMBaseActivity) getActivity();
+    }
+
 
     protected void hideKeyboard() {
         View view = getActivity().findViewById(android.R.id.content);
@@ -36,42 +41,14 @@ public class BMBaseFragment extends Fragment {
 
     protected boolean validate(String messageError, EditText editText, TextInputLayout textInputLayout,
                                ImageView imageView1, ImageView imageView2, int imageView2Size) {
-        if (editText.getText().toString().trim().isEmpty()) {
-            textInputLayout.setError(messageError);
-            imageView1.setLayoutParams(setLayoutParamsInImageView(getContext(), 3, false));
-            imageView2.setLayoutParams(setLayoutParamsInImageView(getContext(), 3, false, imageView2Size));
-            return false;
-        } else {
-            textInputLayout.setErrorEnabled(false);
-            imageView1.setLayoutParams(setLayoutParamsInImageView(getContext(), 7, true));
-            imageView2.setLayoutParams(setLayoutParamsInImageView(getContext(), 7, true, imageView2Size));
-        }
-        return true;
+        return getBaseActivity().validate(messageError, editText, textInputLayout, imageView1, imageView2, imageView2Size);
     }
 
     protected boolean validate(String messageError, EditText editText, TextInputLayout textInputLayout, ImageView imageView) {
-        if (editText.getText().toString().trim().isEmpty()) {
-            textInputLayout.setError(messageError);
-            imageView.setLayoutParams(setLayoutParamsInImageView(getContext(), 3, false));
-            return false;
-        } else {
-            textInputLayout.setErrorEnabled(false);
-            imageView.setLayoutParams(setLayoutParamsInImageView(getContext(), 7, true));
-        }
-        return true;
+        return getBaseActivity().validate(messageError, editText, textInputLayout, imageView);
     }
 
     protected boolean validate(String messageError, EditText editText, TextInputLayout textInputLayout, ImageView imageView, Animation animation) {
-        if (editText.getText().toString().trim().isEmpty()) {
-            textInputLayout.setError(messageError);
-            editText.startAnimation(animation);
-            imageView.setLayoutParams(setLayoutParamsInImageView(getContext(), 3, false));
-            return false;
-        } else {
-            textInputLayout.setErrorEnabled(false);
-            editText.clearAnimation();
-            imageView.setLayoutParams(setLayoutParamsInImageView(getContext(), 7, true));
-        }
-        return true;
+        return getBaseActivity().validate(messageError, editText, textInputLayout, imageView, animation);
     }
 }

@@ -2,6 +2,8 @@ package bm.it.mobile.activity;
 
 import android.content.Context;
 import android.preference.PreferenceFragment;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TextInputLayout;
 import android.support.v4.app.Fragment;
@@ -156,7 +158,7 @@ public class BMBaseActivity extends AppCompatActivity {
         fragmentTransaction.commit();
     }
 
-    protected void changeFocusEditText(EditText editText, final ImageView imageView, final int drawableFocus, final int drawableNoFocus) {
+    public void changeFocusEditText(EditText editText, final ImageView imageView, final int drawableFocus, final int drawableNoFocus) {
         editText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View view, boolean focus) {
@@ -169,29 +171,41 @@ public class BMBaseActivity extends AppCompatActivity {
         });
     }
 
-    protected boolean validate(String messageError, EditText editText, TextInputLayout textInputLayout, ImageView imageView) {
+    private boolean validate(@NonNull String messageError, @NonNull EditText editText, @NonNull TextInputLayout textInputLayout,
+                             @NonNull ImageView imageView1, @Nullable ImageView imageView2, @Nullable Integer imageView2Size, @Nullable Animation animation) {
         if (editText.getText().toString().trim().isEmpty()) {
             textInputLayout.setError(messageError);
-            imageView.setLayoutParams(setLayoutParamsInImageView(this, 3, false));
+            imageView1.setLayoutParams(setLayoutParamsInImageView(this, 3, false));
+            if (imageView2 != null && imageView2Size != null) {
+                imageView2.setLayoutParams(setLayoutParamsInImageView(this, 3, false, imageView2Size));
+            }
+            if (animation != null) {
+                editText.startAnimation(animation);
+            }
             return false;
         } else {
             textInputLayout.setErrorEnabled(false);
-            imageView.setLayoutParams(setLayoutParamsInImageView(this, 7, true));
+            imageView1.setLayoutParams(setLayoutParamsInImageView(this, 7, true));
+            if (imageView2 != null && imageView2Size != null) {
+                imageView2.setLayoutParams(setLayoutParamsInImageView(this, 7, true, imageView2Size));
+            }
+            if (animation != null) {
+                editText.clearAnimation();
+            }
         }
         return true;
     }
 
-    protected boolean validate(String messageError, EditText editText, TextInputLayout textInputLayout, ImageView imageView, Animation animation) {
-        if (editText.getText().toString().trim().isEmpty()) {
-            textInputLayout.setError(messageError);
-            editText.startAnimation(animation);
-            imageView.setLayoutParams(setLayoutParamsInImageView(this, 3, false));
-            return false;
-        } else {
-            textInputLayout.setErrorEnabled(false);
-            editText.clearAnimation();
-            imageView.setLayoutParams(setLayoutParamsInImageView(this, 7, true));
-        }
-        return true;
+    public boolean validate(String messageError, EditText editText, TextInputLayout textInputLayout,
+                            ImageView imageView1, ImageView imageView2, int imageView2Size) {
+        return validate(messageError, editText, textInputLayout, imageView1, imageView2, imageView2Size, null);
+    }
+
+    public boolean validate(String messageError, EditText editText, TextInputLayout textInputLayout, ImageView imageView) {
+        return validate(messageError, editText, textInputLayout, imageView, null, null, null);
+    }
+
+    public boolean validate(String messageError, EditText editText, TextInputLayout textInputLayout, ImageView imageView, Animation animation) {
+        return validate(messageError, editText, textInputLayout, imageView, null, null, animation);
     }
 }
