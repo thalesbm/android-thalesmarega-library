@@ -2,6 +2,7 @@ package bm.it.mobile.component;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.provider.Settings;
@@ -13,6 +14,20 @@ public class BMModals {
 
     public static void showAlertDialog(String description, Activity activity) {
         AlertDialog.Builder builder = new AlertDialog.Builder(activity);
+        builder.setTitle(R.string.alert);
+        builder.setMessage(description);
+
+        builder.setNegativeButton(R.string.ok, new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int which) {
+            }
+        });
+
+        AlertDialog alertDialog = builder.create();
+        alertDialog.show();
+    }
+
+    public static void showAlertDialog(String description, Context context) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(context);
         builder.setTitle(R.string.alert);
         builder.setMessage(description);
 
