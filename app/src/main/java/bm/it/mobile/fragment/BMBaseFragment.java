@@ -1,11 +1,10 @@
 package bm.it.mobile.fragment;
 
-import android.content.Context;
 import android.support.design.widget.TextInputLayout;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.animation.Animation;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ImageView;
 
@@ -17,26 +16,28 @@ public class BMBaseFragment extends Fragment {
         return (BMBaseActivity) getActivity();
     }
 
+    protected void setupToolbar(View toolbarView) {
+        getBaseActivity().setupToolbar(toolbarView);
+    }
+
+    protected void changeToolbarTitle(String title) {
+        getBaseActivity().changeToolbarTitle(title);
+    }
+
+    protected void setToolbarProperties(String title) {
+        getBaseActivity().setToolbarProperties(title);
+    }
+
+    protected Toolbar getToolbar() {
+        return getBaseActivity().getToolbar();
+    }
 
     protected void hideKeyboard() {
-        View view = getActivity().findViewById(android.R.id.content);
-        if (view != null) {
-            InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
-            imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
-        }
+        getBaseActivity().hideKeyboard();
     }
 
     protected void changeFocusEditText(EditText editText, final ImageView imageView, final int drawableFocus, final int drawableNoFocus) {
-        editText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-            @Override
-            public void onFocusChange(View view, boolean focus) {
-                if (focus) {
-                    imageView.setBackgroundResource(drawableFocus);
-                } else {
-                    imageView.setBackgroundResource(drawableNoFocus);
-                }
-            }
-        });
+        getBaseActivity().changeFocusEditText(editText, imageView, drawableFocus, drawableNoFocus);
     }
 
     protected boolean validate(String messageError, EditText editText, TextInputLayout textInputLayout,

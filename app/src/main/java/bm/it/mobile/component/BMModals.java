@@ -40,17 +40,17 @@ public class BMModals {
         alertDialog.show();
     }
 
-    public static void openInternetDialog(final BMBaseActivity activity) {
-        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(activity.getApplicationContext());
-        alertDialogBuilder.setTitle(activity.getApplicationContext().getString(R.string.alert));
-        alertDialogBuilder.setMessage(activity.getApplicationContext().getString(R.string.no_internet_description));
+    public static void openInternetDialog(final Context context) {
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
+        alertDialogBuilder.setTitle(context.getString(R.string.alert));
+        alertDialogBuilder.setMessage(context.getString(R.string.no_internet_description));
         alertDialogBuilder.setCancelable(false);
-        alertDialogBuilder.setPositiveButton(activity.getApplicationContext().getString(R.string.yes), new DialogInterface.OnClickListener() {
+        alertDialogBuilder.setPositiveButton(context.getString(R.string.yes), new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
-                activity.startActivity(new Intent(Settings.ACTION_SETTINGS));
+                context.startActivity(new Intent(Settings.ACTION_SETTINGS));
             }
         });
-        alertDialogBuilder.setNegativeButton(activity.getApplicationContext().getString(R.string.no), new DialogInterface.OnClickListener() {
+        alertDialogBuilder.setNegativeButton(context.getString(R.string.no), new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
                 dialog.cancel();
             }

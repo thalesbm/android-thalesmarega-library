@@ -89,11 +89,13 @@ public class BMBaseActivity extends AppCompatActivity {
         });
     }
 
-    protected void hideKeyboard() {
+    public void hideKeyboard() {
         View view = findViewById(android.R.id.content);
         if (view != null) {
             InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-            imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+            if (imm != null) {
+                imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+            }
         }
     }
 
