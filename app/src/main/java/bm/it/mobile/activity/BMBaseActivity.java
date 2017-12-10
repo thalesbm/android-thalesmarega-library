@@ -99,7 +99,7 @@ public class BMBaseActivity extends AppCompatActivity {
         }
     }
 
-    protected void onBackPressed(String defaultFragmentName, FragmentManager fragmentManagerApp4, android.app.FragmentManager mFragmentManagerApp, int drawerID, NavigationView navigationView) {
+    private void onBackPressedMethod(String defaultFragmentName, FragmentManager fragmentManagerApp4, android.app.FragmentManager mFragmentManagerApp, int drawerID, NavigationView navigationView, int defaultIndex) {
         DrawerLayout drawer = (DrawerLayout) this.findViewById(drawerID);
         if (drawer.isDrawerOpen(8388611)) {
             drawer.closeDrawer(8388611);
@@ -113,7 +113,7 @@ public class BMBaseActivity extends AppCompatActivity {
                 if (className.equals(defaultFragmentName)) {
                     this.finish();
                 } else {
-                    navigationView.getMenu().getItem(0).setChecked(true);
+                    navigationView.getMenu().getItem(defaultIndex).setChecked(true);
 
                     for (i = 0; i < fragmentManagerApp4.getBackStackEntryCount(); ++i) {
                         fragmentManagerApp4.popBackStack();
@@ -126,7 +126,7 @@ public class BMBaseActivity extends AppCompatActivity {
                 if (className.equals(defaultFragmentName)) {
                     this.finish();
                 } else {
-                    navigationView.getMenu().getItem(0).setChecked(true);
+                    navigationView.getMenu().getItem(defaultIndex).setChecked(true);
 
                     for (i = 0; i < mFragmentManagerApp.getBackStackEntryCount(); ++i) {
                         mFragmentManagerApp.popBackStack();
@@ -139,6 +139,14 @@ public class BMBaseActivity extends AppCompatActivity {
         } else {
             super.onBackPressed();
         }
+    }
+
+    protected void onBackPressed(String defaultFragmentName, FragmentManager fragmentManagerApp4, android.app.FragmentManager mFragmentManagerApp, int drawerID, NavigationView navigationView) {
+        onBackPressedMethod(defaultFragmentName, fragmentManagerApp4, mFragmentManagerApp, drawerID, navigationView, 0);
+    }
+
+    protected void onBackPressed(String defaultFragmentName, FragmentManager fragmentManagerApp4, android.app.FragmentManager mFragmentManagerApp, int drawerID, NavigationView navigationView, int defaultIndex) {
+        onBackPressedMethod(defaultFragmentName, fragmentManagerApp4, mFragmentManagerApp, drawerID, navigationView, defaultIndex);
     }
 
     protected void replacePreferenceFragment(PreferenceFragment fragment, boolean addToBackStack, int navDrawerContainer) {
