@@ -1,9 +1,9 @@
-package bm.it.mobile.component;
+package bm.it.mobile.modals;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
 
-public class BMProgressDialog {
+public class CustomProgressDialog {
     private static ProgressDialog progressDialog;
 
     public static synchronized void showProgressDialog(Activity activity, String message) {
