@@ -19,6 +19,8 @@ import android.view.animation.Animation;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Spinner;
+import android.widget.TextView;
 
 import bm.it.mobile.R;
 
@@ -193,6 +195,21 @@ public class BMBaseActivity extends AppCompatActivity {
             }
             if (animation != null) {
                 editText.clearAnimation();
+            }
+        }
+        return true;
+    }
+
+    public boolean validate(@NonNull Spinner spinner, @Nullable Animation animation, boolean showError) {
+        if (showError) {
+            ((TextView) spinner.getSelectedView()).setError("");
+            if (animation != null) {
+                spinner.startAnimation(animation);
+            }
+            return false;
+        } else {
+            if (animation != null) {
+                spinner.clearAnimation();
             }
         }
         return true;
