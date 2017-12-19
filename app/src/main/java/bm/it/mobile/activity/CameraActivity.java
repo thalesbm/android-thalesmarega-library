@@ -7,6 +7,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.annotation.Nullable;
+import android.support.v4.content.FileProvider;
 
 import bm.it.mobile.R;
 
@@ -56,7 +57,8 @@ public class CameraActivity extends CameraGalleryActivity {
     @Override
     protected void openIntent() {
         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-        Uri uri = Uri.fromFile(getOutputMediaFile());
+        // Uri uri = Uri.fromFile(getOutputMediaFile());
+        Uri uri = FileProvider.getUriForFile(this, "bm.it.mobile.provider", getOutputMediaFile());
         intent.putExtra(MediaStore.EXTRA_OUTPUT, uri);
         startActivityForResult(intent, INTENT_OPEN_CAMERA);
     }

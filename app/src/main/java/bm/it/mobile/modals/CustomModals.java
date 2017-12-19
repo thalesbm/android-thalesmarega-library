@@ -1,4 +1,4 @@
-package bm.it.mobile.component;
+package bm.it.mobile.modals;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -10,7 +10,7 @@ import android.provider.Settings;
 import bm.it.mobile.R;
 import bm.it.mobile.activity.BMBaseActivity;
 
-public class BMModals {
+public class CustomModals {
 
     public static void showAlertDialog(String description, Activity activity) {
         AlertDialog.Builder builder = new AlertDialog.Builder(activity);
