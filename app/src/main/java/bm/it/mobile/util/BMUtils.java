@@ -19,6 +19,7 @@ public class BMUtils {
         return cm != null && cm.getActiveNetworkInfo() != null && cm.getActiveNetworkInfo().isAvailable() && cm.getActiveNetworkInfo().isConnected();
     }
 
+    @Deprecated
     public static void imageViewOnTouch(ImageView imageView) {
         imageView.setOnTouchListener(new View.OnTouchListener() {
             @Override
@@ -43,10 +44,12 @@ public class BMUtils {
         });
     }
 
+    @Deprecated
     public static void textViewOnTouch(TextView textView, final int colorDefault) {
         textViewOnTouch(textView, colorDefault, Color.GRAY);
     }
 
+    @Deprecated
     public static void textViewOnTouch(TextView textView, final int colorDefault, final int selectedDefault) {
         textView.setOnTouchListener(new View.OnTouchListener() {
             @Override

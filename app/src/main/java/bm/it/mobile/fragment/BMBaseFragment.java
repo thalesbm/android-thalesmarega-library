@@ -62,4 +62,8 @@ public class BMBaseFragment extends Fragment {
     protected boolean validate(@NonNull Spinner spinner, @Nullable Animation animation, boolean showError) {
         return getBaseActivity().validate(spinner, animation, showError);
     }
+
+    protected boolean validate(@NonNull Spinner spinner, boolean showError) {
+        return getBaseActivity().validate(spinner, null, showError);
+    }
 }

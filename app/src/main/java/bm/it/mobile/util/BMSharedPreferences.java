@@ -1,4 +1,4 @@
-package bm.it.mobile.component;
+package bm.it.mobile.util;
 
 import android.content.Context;
 import android.content.SharedPreferences;

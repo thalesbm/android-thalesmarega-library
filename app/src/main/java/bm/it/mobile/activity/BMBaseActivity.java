@@ -223,6 +223,10 @@ public class BMBaseActivity extends AppCompatActivity {
         return true;
     }
 
+    public boolean validate(@NonNull Spinner spinner, boolean showError) {
+        return validate(spinner, null, showError);
+    }
+
     public boolean validate(String messageError, EditText editText, TextInputLayout textInputLayout,
                             ImageView imageView1, ImageView imageView2, int imageView2Size) {
         return validate(messageError, editText, textInputLayout, imageView1, imageView2, imageView2Size, null);
