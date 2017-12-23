@@ -12,7 +12,7 @@ public class DateUtils {
     }
 
     public static String formatDateWithHour(Date date) {
-        return new SimpleDateFormat("dd/MM/yyyy hh:mm", Locale.ENGLISH).format(date);
+        return new SimpleDateFormat("dd/MM/yyyy HH:mm", Locale.ENGLISH).format(date);
     }
 
     public static boolean compareDate(Date date1, Date date2) {
