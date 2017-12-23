@@ -26,14 +26,22 @@ public class ParcelableUtils {
         return value != null ? (Integer) value : null;
     }
 
+    public static Double readValueToDouble(Parcel in) {
+        Object value = in.readValue(Double.class.getClassLoader());
+        return value != null ? (Double) value : null;
+    }
+
+    public static Float readValueToFloat(Parcel in) {
+        Object value = in.readValue(Float.class.getClassLoader());
+        return value != null ? (Float) value : null;
+    }
+
     public static byte[] readValueToByte(Parcel in) {
         Object value = in.readValue(byte[].class.getClassLoader());
         return value != null ? (byte[]) value : null;
     }
 
     public static Date readValueToDate(Parcel in) {
-        //Object value = in.readValue(Long.class.getClassLoader());
-        //return in.readLong() == 0 ? null : new Date(in.readLong());
         return new Date(in.readLong());
     }
 

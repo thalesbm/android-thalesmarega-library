@@ -1,7 +1,6 @@
 package bm.it.mobile.component;
 
 import android.content.Context;
-import android.graphics.Typeface;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.AttributeSet;
@@ -9,24 +8,25 @@ import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 
-public class CustomPhoneEditTextLight extends android.support.v7.widget.AppCompatEditText implements
+public class CustomPhoneEditText extends android.support.v7.widget.AppCompatEditText implements
         View.OnKeyListener, TextWatcher {
 
-    private final String TAG = CustomPhoneEditTextLight.class.getSimpleName();
+    private final String TAG = CustomPhoneEditText.class.getSimpleName();
 
+    private boolean mHasNineNumbers;
     private boolean mKeyDel;
 
-    public CustomPhoneEditTextLight(Context context, AttributeSet attrs, int defStyle) {
+    public CustomPhoneEditText(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
         init();
     }
 
-    public CustomPhoneEditTextLight(Context context, AttributeSet attrs) {
+    public CustomPhoneEditText(Context context, AttributeSet attrs) {
         super(context, attrs);
         init();
     }
 
-    public CustomPhoneEditTextLight(Context context) {
+    public CustomPhoneEditText(Context context) {
         super(context);
         init();
     }
@@ -64,10 +64,20 @@ public class CustomPhoneEditTextLight extends android.support.v7.widget.AppCompa
                 text.insert(4, " ");
             }
 
-            if (text.length() == 10) {
-                text.insert(10, "-");
+            if (mHasNineNumbers) {
+                if (text.length() == 10) {
+                    text.insert(10, "-");
+                }
+            } else {
+                if (text.length() == 9) {
+                    text.insert(9, "-");
+                }
             }
         }
+    }
+
+    public void setHasNineNumbers(boolean hasNineNumbers) {
+        this.mHasNineNumbers = hasNineNumbers;
     }
 
     @Override
