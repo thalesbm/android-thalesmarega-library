@@ -6,11 +6,10 @@ import android.text.TextWatcher;
 import android.util.AttributeSet;
 
 public class BMCustomLicenseEditText extends android.support.v7.widget.AppCompatEditText implements
-        TextWatcher { // View.OnKeyListener,
+        TextWatcher {
 
     private final String TAG = BMCustomLicenseEditText.class.getSimpleName();
 
-    // private boolean mKeyDel;
     private boolean mDeletedFormatted = false;
 
     public BMCustomLicenseEditText(Context context, AttributeSet attrs, int defStyle) {
@@ -29,7 +28,6 @@ public class BMCustomLicenseEditText extends android.support.v7.widget.AppCompat
     }
 
     public void init() {
-//        setOnKeyListener(this);
         addTextChangedListener(this);
     }
 
@@ -51,8 +49,6 @@ public class BMCustomLicenseEditText extends android.support.v7.widget.AppCompat
 
     @Override
     public void afterTextChanged(Editable text) {
-//        Log.d(TAG, text + " - " + mKeyDel);
-
         if (text != null && !mDeletedFormatted) {
 
             if (text.length() == 3) {
@@ -60,14 +56,4 @@ public class BMCustomLicenseEditText extends android.support.v7.widget.AppCompat
             }
         }
     }
-
-//    @Override
-//    public boolean onKey(View v, int keyCode, KeyEvent event) {
-//        if (keyCode == KeyEvent.KEYCODE_DEL) {
-//            this.mKeyDel = true;
-//        } else {
-//            this.mKeyDel = false;
-//        }
-//        return false;
-//    }
 }
