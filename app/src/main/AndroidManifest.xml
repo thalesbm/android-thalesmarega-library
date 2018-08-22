@@ -23,8 +23,8 @@
             android:windowSoftInputMode="stateHidden" />
 
         <provider
-            android:name="android.support.v4.content.FileProvider"
-            android:authorities="bm.it.mobile.provider"
+            android:name=".util.BMGenericFileProvider"
+            android:authorities="bm.it.mobile"
             android:exported="false"
             android:grantUriPermissions="true">
             <meta-data

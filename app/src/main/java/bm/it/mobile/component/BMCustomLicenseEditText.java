@@ -8,8 +8,6 @@ import android.util.AttributeSet;
 public class BMCustomLicenseEditText extends android.support.v7.widget.AppCompatEditText implements
         TextWatcher {
 
-    private final String TAG = BMCustomLicenseEditText.class.getSimpleName();
-
     private boolean mDeletedFormatted = false;
 
     public BMCustomLicenseEditText(Context context, AttributeSet attrs, int defStyle) {
