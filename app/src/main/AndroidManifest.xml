@@ -8,22 +8,22 @@
         android:supportsRtl="true">
 
         <activity
-            android:name=".activity.BMBaseActivity"
+            android:name=".ui.activity.BMBaseActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden" />
 
         <activity
-            android:name=".activity.BMCameraActivity"
+            android:name=".ui.activity.BMCameraActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden" />
 
         <activity
-            android:name=".activity.BMGalleryActivity"
+            android:name=".ui.activity.BMGalleryActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden" />
 
         <provider
-            android:name=".util.BMGenericFileProvider"
+            android:name=".utils.BMGenericFileProvider"
             android:authorities="bm.it.mobile"
             android:exported="false"
             android:grantUriPermissions="true">
