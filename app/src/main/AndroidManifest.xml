@@ -22,14 +22,14 @@
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden" />
 
-        <provider
-            android:name=".utils.BMGenericFileProvider"
-            android:authorities="bm.it.mobile"
-            android:exported="false"
-            android:grantUriPermissions="true">
-            <meta-data
-                android:name="android.support.FILE_PROVIDER_PATHS"
-                android:resource="@xml/filepaths" />
-        </provider>
+        <!--<provider-->
+        <!--android:name=".utils.BMGenericFileProvider"-->
+        <!--android:authorities="bm.it.mobile"-->
+        <!--android:exported="false"-->
+        <!--android:grantUriPermissions="true">-->
+        <!--<meta-data-->
+        <!--android:name="android.support.FILE_PROVIDER_PATHS"-->
+        <!--android:resource="@xml/filepaths" />-->
+        <!--</provider>-->
     </application>
 </manifest>
