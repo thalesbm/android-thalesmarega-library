@@ -2,9 +2,8 @@ package bm.it.mobile.formatter;
 
 import org.junit.Test;
 
-import bm.it.mobile.formatter.BMFormatterEmail;
-
-import static junit.framework.Assert.*;
+import static junit.framework.Assert.assertFalse;
+import static junit.framework.Assert.assertTrue;
 
 public class FormatterEmailTest {
 

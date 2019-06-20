@@ -1,35 +1,25 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="bm.it.mobile">
+    package="bm.it.mobile.sample">
 
-    <uses-permission  android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
         android:allowBackup="true"
-        android:supportsRtl="true">
+        android:icon="@android:drawable/alert_dark_frame"
+        android:label="@string/app_name"
+        android:largeHeap="true"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
 
         <activity
-            android:name=".ui.activity.BMBaseActivity"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden" />
+            android:name=".activities.MainActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
 
-        <activity
-            android:name=".ui.activity.BMCameraActivity"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden" />
-
-        <activity
-            android:name=".ui.activity.BMGalleryActivity"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden" />
-
-        <!--<provider-->
-        <!--android:name=".utils.BMGenericFileProvider"-->
-        <!--android:authorities="bm.it.mobile"-->
-        <!--android:exported="false"-->
-        <!--android:grantUriPermissions="true">-->
-        <!--<meta-data-->
-        <!--android:name="android.support.FILE_PROVIDER_PATHS"-->
-        <!--android:resource="@xml/filepaths" />-->
-        <!--</provider>-->
     </application>
 </manifest>

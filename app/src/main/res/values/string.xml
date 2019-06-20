@@ -1,20 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">Library</string>
-
-    <!-- alert dialog -->
-    <string name="alert">Alerta</string>
-    <string name="ok">OK</string>
-    <string name="yes">Sim</string>
-    <string name="no">Não</string>
-    <string name="cancel">Cancelar</string>
-    <string name="try_again">Tentar Novamente</string>
-
-    <string name="no_internet_description">Você não esta conectado a internet.</string>
-
-    <string name="permission_generic">Você precisa aceitar todas as permissões para conseguir utilizar todos os recursos do aplicativo.</string>
-    <string name="permission_camera">Você não tem permissão para acessar a camera. Você precisa aceitar todas as permissões para conseguir utilizar essa funcionalidade.</string>
-    <string name="permission_gallery">Você não tem permissão para acessar a galeria. Você precisa aceitar todas as permissões para conseguir utilizar essa funcionalidade.</string>
+    <string name="app_name">BMLibrary Sample</string>
 
 </resources>

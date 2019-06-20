@@ -2,9 +2,6 @@ package bm.it.mobile.formatter;
 
 import org.junit.Test;
 
-import bm.it.mobile.formatter.BMFormatterCPF;
-import bm.it.mobile.formatter.BMFormatterEmail;
-
 import static junit.framework.Assert.assertFalse;
 import static junit.framework.Assert.assertTrue;
 import static org.junit.Assert.assertEquals;

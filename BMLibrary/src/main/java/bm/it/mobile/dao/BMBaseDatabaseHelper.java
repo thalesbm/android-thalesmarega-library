@@ -1,4 +1,4 @@
-package bm.it.mobile.database.dao;
+package bm.it.mobile.dao;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;

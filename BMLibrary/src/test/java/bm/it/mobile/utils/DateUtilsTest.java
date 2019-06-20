@@ -1,11 +1,12 @@
 package bm.it.mobile.utils;
 
+import junit.framework.Assert;
+
 import org.junit.Test;
 
 import java.util.Calendar;
 
 import static junit.framework.Assert.assertFalse;
-import static junit.framework.TestCase.assertTrue;
 import static org.junit.Assert.assertEquals;
 
 public class DateUtilsTest {
@@ -31,7 +32,7 @@ public class DateUtilsTest {
         Calendar calendar = Calendar.getInstance();
         calendar.set(1992, 10, 10, 20, 18);
 
-        assertTrue(BMDateUtils.compareDate(calendar.getTime(), calendar.getTime()));
+        Assert.assertTrue(BMDateUtils.compareDate(calendar.getTime(), calendar.getTime()));
     }
 
     @Test

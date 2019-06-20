@@ -1,4 +1,4 @@
-package bm.it.mobile.database.dao;
+package bm.it.mobile.dao;
 
 import com.j256.ormlite.support.ConnectionSource;
 
