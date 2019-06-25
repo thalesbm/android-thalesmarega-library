@@ -40,5 +40,13 @@ public class MainActivity extends BMBaseActivity {
                 startActivity(new Intent(MainActivity.this, CameraActivity.class));
             }
         });
+
+        Button btnGallery = findViewById(R.id.btn_gallery);
+        btnGallery.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, GalleryActivity.class));
+            }
+        });
     }
 }

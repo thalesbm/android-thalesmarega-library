@@ -1,18 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="title">BMLibrary Sample</string>
+    <string name="title" translatable="false">BMLibrary Sample</string>
 
-    <string name="formatter_title">Formatter</string>
-    <string name="formatter_phone">Phone</string>
-    <string name="formatter_cep">CEP</string>
-    <string name="formatter_date">Date</string>
-    <string name="formatter_cpf">CPF</string>
-    <string name="formatter_rg">RG</string>
+    <string name="formatter_title" translatable="false">Formatter</string>
+    <string name="formatter_phone" translatable="false">Phone</string>
+    <string name="formatter_cep" translatable="false">CEP</string>
+    <string name="formatter_date" translatable="false">Date</string>
+    <string name="formatter_cpf" translatable="false">CPF</string>
+    <string name="formatter_rg" translatable="false">RG</string>
 
-    <string name="camera_title">Camera</string>
-    <string name="camera_button">Open Camera</string>
+    <string name="camera_title" translatable="false">Camera</string>
+    <string name="camera_button" translatable="false">Open Camera</string>
 
-    <string name="gallery_title">Gallery</string>
+    <string name="gallery_title" translatable="false">Gallery</string>
+    <string name="gallery_button" translatable="false">Open Gallery</string>
 
 </resources>

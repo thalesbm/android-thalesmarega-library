@@ -20,8 +20,8 @@ import bm.it.mobile.utils.BMImageUtils;
      startActivityForResult(intent, BMGalleryActivity.INTENT_OPEN_GALLERY);
 
      // get result
-     if (requestCode == BMCameraActivity.INTENT_OPEN_CAMERA && resultCode == RESULT_OK) {
-        String fileName = data.getExtras().getString(BMCameraActivity.PARAMETER_IMAGE_PATH);
+     if (requestCode == BMGalleryActivity.INTENT_OPEN_GALLERY && resultCode == RESULT_OK) {
+        String fileName = data.getExtras().getString(BMGalleryActivity.PARAMETER_IMAGE_PATH);
      }
  */
 public class BMGalleryActivity extends BMCameraGalleryActivity {

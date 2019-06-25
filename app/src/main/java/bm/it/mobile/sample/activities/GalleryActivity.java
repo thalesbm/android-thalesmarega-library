@@ -9,27 +9,27 @@ import android.widget.ImageView;
 
 import bm.it.mobile.sample.R;
 import bm.it.mobile.ui.activity.BMBaseActivity;
-import bm.it.mobile.ui.activity.BMCameraActivity;
+import bm.it.mobile.ui.activity.BMGalleryActivity;
 
-public class CameraActivity extends BMBaseActivity {
+public class GalleryActivity extends BMBaseActivity {
 
     private ImageView imageView;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_camera);
+        setContentView(R.layout.activity_gallery);
 
         setupToolbar(findViewById(R.id.toolbar));
-        setToolbarProperties(getString(R.string.camera_title));
+        setToolbarProperties(getString(R.string.gallery_title));
 
         this.init();
     }
 
     private void init() {
-        imageView = findViewById(R.id.activity_camera_imageview);
+        imageView = findViewById(R.id.activity_gallery_imageview);
 
-        Button btnOpenCamera = findViewById(R.id.activity_camera_button);
+        Button btnOpenCamera = findViewById(R.id.activity_gallery_button);
         btnOpenCamera.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -39,18 +39,18 @@ public class CameraActivity extends BMBaseActivity {
     }
 
     private void openCamera() {
-        Intent intent = new Intent(this, BMCameraActivity.class);
-        startActivityForResult(intent, BMCameraActivity.INTENT_OPEN_CAMERA);
+        Intent intent = new Intent(this, BMGalleryActivity.class);
+        startActivityForResult(intent, BMGalleryActivity.INTENT_OPEN_GALLERY);
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if (requestCode == BMCameraActivity.INTENT_OPEN_CAMERA
+        if (requestCode == BMGalleryActivity.INTENT_OPEN_GALLERY
                 && resultCode == RESULT_OK
                 && data != null && data.getExtras() != null) {
-            String fileName = data.getExtras().getString(BMCameraActivity.PARAMETER_IMAGE_PATH);
+            String fileName = data.getExtras().getString(BMGalleryActivity.PARAMETER_IMAGE_PATH);
 
             // TODO: EXIBIR A IMAGEM
         }
