@@ -10,4 +10,9 @@
     <string name="formatter_cpf">CPF</string>
     <string name="formatter_rg">RG</string>
 
+    <string name="camera_title">Camera</string>
+    <string name="camera_button">Open Camera</string>
+
+    <string name="gallery_title">Gallery</string>
+
 </resources>
