@@ -9,6 +9,7 @@ import android.widget.Button;
 
 import bm.it.mobile.sample.R;
 import bm.it.mobile.ui.activity.BMBaseActivity;
+import bm.it.mobile.ui.activity.BMCameraActivity;
 
 public class MainActivity extends BMBaseActivity {
 
@@ -29,6 +30,14 @@ public class MainActivity extends BMBaseActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(MainActivity.this, FormatterActivity.class));
+            }
+        });
+
+        Button btnCamera = findViewById(R.id.btn_camera);
+        btnCamera.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, CameraActivity.class));
             }
         });
     }
