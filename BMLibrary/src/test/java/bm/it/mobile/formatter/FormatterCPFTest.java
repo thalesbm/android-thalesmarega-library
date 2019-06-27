@@ -45,22 +45,22 @@ public class FormatterCPFTest {
 
     @Test
     public void checkIfIsValidCPFNumber2() {
-        BMFormatterCPF cpf = new BMFormatterCPF("40275083861");
+        BMFormatterCPF cpf = new BMFormatterCPF("23125882850");
 
         assertTrue(cpf.isValidCPF());
     }
 
     @Test
     public void checkFormatter() {
-        BMFormatterCPF cpf = new BMFormatterCPF("40275083861");
+        BMFormatterCPF cpf = new BMFormatterCPF("23125882850");
 
-        assertEquals("402.750.838-61", cpf.format());
+        assertEquals("231.258.828-50", cpf.format());
     }
 
     @Test
     public void checkUnformat() {
-        BMFormatterCPF cpf = new BMFormatterCPF("402.750.838-61");
+        BMFormatterCPF cpf = new BMFormatterCPF("231.258.828-50");
 
-        assertEquals("40275083861", cpf.unformat());
+        assertEquals("23125882850", cpf.unformat());
     }
 }
