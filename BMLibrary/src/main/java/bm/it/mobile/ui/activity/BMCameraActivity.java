@@ -57,8 +57,7 @@ public class BMCameraActivity extends BMCameraGalleryActivity {
     @Override
     protected void openIntent() {
         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-        // Uri uri = Uri.fromFile(getOutputMediaFile());
-        Uri uri = FileProvider.getUriForFile(this, "bm.it.mobile.provider", getOutputMediaFile());
+        Uri uri = FileProvider.getUriForFile(this, "bm.it.mobile.utils.BMGenericFileProvider", getOutputMediaFile());
         intent.putExtra(MediaStore.EXTRA_OUTPUT, uri);
         startActivityForResult(intent, INTENT_OPEN_CAMERA);
     }

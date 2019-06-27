@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import bm.it.mobile.sample.R;
 import bm.it.mobile.ui.activity.BMBaseActivity;
 import bm.it.mobile.ui.activity.BMCameraActivity;
+import bm.it.mobile.utils.BMImageUtils;
 
 public class CameraActivity extends BMBaseActivity {
 
@@ -52,7 +53,8 @@ public class CameraActivity extends BMBaseActivity {
                 && data != null && data.getExtras() != null) {
             String fileName = data.getExtras().getString(BMCameraActivity.PARAMETER_IMAGE_PATH);
 
-            // TODO: EXIBIR A IMAGEM
+            BMImageUtils imageUtils = new BMImageUtils(this);
+            imageView.setImageBitmap(imageUtils.toBitmap().fromImagePath(fileName));
         }
     }
 }
