@@ -1,7 +1,7 @@
 package bm.it.mobile.sample.activities;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 import android.widget.EditText;
 
 import bm.it.mobile.formatter.Mask;

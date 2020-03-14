@@ -2,7 +2,7 @@ package bm.it.mobile.ui.component;
 
 import android.content.Context;
 import android.graphics.PorterDuff;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
@@ -11,7 +11,7 @@ import android.widget.ImageView;
 /**
  * @author thales.marega@daon.com
  */
-public class BMCustomTextView extends android.support.v7.widget.AppCompatTextView {
+public class BMCustomTextView extends androidx.appcompat.widget.AppCompatTextView {
     public BMCustomTextView(Context context) {
         super(context);
         init();

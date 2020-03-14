@@ -3,7 +3,7 @@ package bm.it.mobile.utils.images;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
-import android.support.v4.content.res.ResourcesCompat;
+import androidx.core.content.res.ResourcesCompat;
 
 public class BMConvertToDrawable {
 
