@@ -1,5 +1,7 @@
 # android-thalesmarega-library
 
+# DEPRECATED
+
 ------
 
 #### Instalation
